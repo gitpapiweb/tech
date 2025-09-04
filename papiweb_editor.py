@@ -596,20 +596,30 @@ def main():
     # Crear la aplicación
     app = PapiwebEditor(root)
     
-    # Mensaje de bienvenida
-    welcome_text = """¡Bienvenido a Papiweb Editor Pro!
+    # Banner mejorado Papiweb
+    welcome_text = """
+    ========================================
+    ██████╗  █████╗ ██████╗ ██╗██╗    ██╗ 
+    ██╔══██╗██╔══██╗██╔══██╗██║██║    ██║
+    ██████╔╝███████║██████╔╝██║██║ █╗ ██║
+    ██╔═══╝ ██╔══██║██╔══   ██║██║███╗██║
+    ██║     ██║  ██║██║     ██║╚███╔███╔╝
+     ═╝     ╚═╝  ╚═╝╚═╝     ╚═╝ ╚══╝╚══╝ EB
+    ========================================
+    PAPIWEB Editor Pro v2
+    Desarrollos Informáticos
+    ========================================
 
-Este editor de texto profesional incluye:
-• Corrector ortográfico en tiempo real
-• 3 estilos de redacción personalizables
-• Estadísticas detalladas del texto
-• Herramientas de formato avanzadas
+    Este editor de texto profesional incluye:
+    • Corrector ortográfico en tiempo real
+    • 3 estilos de redacción personalizables
+    • Estadísticas detalladas del texto
+    • Herramientas de formato avanzadas
 
-Selecciona tu estilo de redacción en el panel izquierdo y comienza a escribir.
+    Selecciona tu estilo de redacción en el panel izquierdo y comienza a escribir.
 
-Desarrollado por Papiweb - Desarrollos Informáticos
-"""
-    
+    Copyright © 2025 Papiweb
+    """
     app.text_editor.insert("1.0", welcome_text)
     app.text_editor.mark_set("insert", "1.0")
     app.is_modified = False
