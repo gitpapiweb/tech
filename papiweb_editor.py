@@ -197,15 +197,15 @@ class PapiwebEditor:
         # Menú Archivo
         file_menu = tk.Menu(menubar, tearoff=0, bg="#34495e", fg="#ecf0f1")
         menubar.add_cascade(label="Archivo", menu=file_menu)
-    file_menu.add_command(label="Nuevo", command=self.new_file, accelerator="Ctrl+N")
-    file_menu.add_command(label="Abrir", command=self.open_file, accelerator="Ctrl+O")
-    file_menu.add_command(label="Guardar", command=self.save_file, accelerator="Ctrl+S")
-    file_menu.add_command(label="Guardar como", command=self.save_as_file)
-    file_menu.add_separator()
-    file_menu.add_command(label="Importar desde PDF", command=self.import_from_pdf)
-    file_menu.add_command(label="Exportar a PDF", command=self.export_to_pdf)
-    file_menu.add_separator()
-    file_menu.add_command(label="Salir", command=self.root.quit)
+        file_menu.add_command(label="Nuevo", command=self.new_file, accelerator="Ctrl+N")
+        file_menu.add_command(label="Abrir", command=self.open_file, accelerator="Ctrl+O")
+        file_menu.add_command(label="Guardar", command=self.save_file, accelerator="Ctrl+S")
+        file_menu.add_command(label="Guardar como", command=self.save_as_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="Importar desde PDF", command=self.import_from_pdf)
+        file_menu.add_command(label="Exportar a PDF", command=self.export_to_pdf)
+        file_menu.add_separator()
+        file_menu.add_command(label="Salir", command=self.root.quit)
     def import_from_pdf(self):
         import pdfplumber
         file_path = filedialog.askopenfilename(
