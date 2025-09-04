@@ -90,26 +90,18 @@ class PapiwebEditorConsole:
 
     def menu(self):
         self.show_banner()
-        def menu(self):
         while True:
-            print("\n=== PAPIWEB Editor Console ===")
-            print("CREAR/ABRIR:")
-            print("  1. Escribir nuevo texto")
-            print("  2. Cargar desde archivo TXT")
-            print("  3. Importar desde PDF")
-            print("
-GUARDAR:")
-            print("  4. Guardar documento")
-            print("  5. Exportar a PDF")
-            print("
-HERRAMIENTAS:")
-            print("  6. Ver estadísticas")
-            print("  7. Verificar ortografía")
-            print("  8. Análisis de estilo")
-            print("  9. Cambiar estilo de redacción")
-            print("     Actual: {}".format(self.writing_styles[self.writing_style]["name"]))
-            print("
-  0. Salir")
+            print("\n--- Papiweb Editor Console ---")
+            print("1. Nuevo documento")
+            print("2. Abrir archivo de texto")
+            print("3. Importar desde PDF")
+            print("4. Guardar documento")
+            print("5. Exportar a PDF")
+            print("6. Ver estadísticas")
+            print("7. Verificar ortografía")
+            print("8. Análisis de estilo")
+            print("9. Cambiar estilo de redacción (actual: {} )".format(self.writing_styles[self.writing_style]["name"]))
+            print("0. Salir")
             choice = input("Seleccione una opción: ")
             if choice == "1":
                 self.new_document()
@@ -276,98 +268,14 @@ Copyright © 2025 Papiweb
         print("\n".join(suggestions))
 
     def edit_content(self):
-        print("\n=== Editor de Texto PAPIWEB ===")
-        print("Comandos disponibles:")
-        print("  :g - Guardar")
-        print("  :q - Salir sin guardar")
-        print("  :s - Ver estadísticas")
-        print("  :o - Verificar ortografía")
-        print("  :h - Ver esta ayuda")
-        print("(Presione Enter dos veces para finalizar)")
-        print("================================")
-        
-        if self.content:
-            print("\nContenido actual:")
-            print(self.content)
-        
-        print("\nIngrese su texto:")
+        print("Ingrese el texto (finalice con una línea vacía):")
         lines = []
-        empty_lines = 0
-        
         while True:
-            try:
-                line = input("> ")
-                
-                if line.strip() == ":h":
-                    print("\n=== Comandos disponibles ===")
-                    print("  :g - Guardar")
-                    print("  :q - Salir sin guardar")
-                    print("  :s - Ver estadísticas")
-                    print("  :o - Verificar ortografía")
-                    print("  :h - Ver esta ayuda")
-                    continue
-                
-                if line.strip() == ":q":
-                    if lines:
-                        confirm = input("¿Desea descartar los cambios? (s/N): ")
-                        if confirm.lower() != 's':
-                            continue
-                    break
-                
-                if line.strip() == ":g":
-                    self.content = "\n".join(lines)
-                    self.save_text_file()
-                    continue
-                
-                if line.strip() == ":s":
-                    temp_content = "\n".join(lines)
-                    print("\n=== Estadísticas ===")
-                    print(f"Palabras: {len(temp_content.split())}")
-                    print(f"Caracteres: {len(temp_content)}")
-                    print(f"Líneas: {len(lines)}")
-                    print("==================")
-                    continue
-                
-                if line.strip() == ":o":
-                    temp_content = "\n".join(lines)
-                    words = re.findall(r'\b\w+\b', temp_content.lower())
-                    errors = []
-                    for word in words:
-                        if word in self.spelling_errors:
-                            errors.append(f"'{word}' → {self.spelling_errors[word]}")
-                    
-                    print("\n=== Revisión Ortográfica ===")
-                    if errors:
-                        print("Errores encontrados:")
-                        for error in errors[:10]:
-                            print(f"• {error}")
-                        if len(errors) > 10:
-                            print(f"...y {len(errors)-10} errores más")
-                    else:
-                        print("No se encontraron errores ortográficos")
-                    print("==========================")
-                    continue
-                
-                if line == "":
-                    empty_lines += 1
-                    if empty_lines >= 2:  # Dos líneas vacías para terminar
-                        break
-                else:
-                    empty_lines = 0
-                    
-                lines.append(line)
-                
-            except KeyboardInterrupt:
-                print("\n¿Desea salir? Presione Ctrl+C nuevamente para confirmar")
-                try:
-                    input()
-                    break
-                except KeyboardInterrupt:
-                    print("\nSaliendo...")
-                    break
-                    
-        if lines:
-            self.content = "\n".join(lines)
+            line = input()
+            if line == "":
+                break
+            lines.append(line)
+        self.content = "\n".join(lines)
 
 if __name__ == "__main__":
     editor = PapiwebEditorConsole()
