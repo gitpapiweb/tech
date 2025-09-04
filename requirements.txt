@@ -1,0 +1,5 @@
+# Dependencias requeridas para PAPIWEB Editor
+tkinter
+PyPDF2>=3.0.0
+pdfplumber>=0.10.2
+reportlab>=4.0.7
